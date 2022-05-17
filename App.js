@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
 	FlatList,
 	SafeAreaView,
@@ -19,16 +19,21 @@ const Item = ({ item, onClick }) => (
 );
 
 const App = () => {
+	const visorRef = useRef(null);
+	const [inputVal, setInputVal] = useState([]);
+
 	function handleKeyPress(e) {
+		setInputVal(val => [...val, e.symbol]);
 		console.log(e);
 	}
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />
 			<TextInput
+				ref={visorRef}
 				style={styles.visor}
+				value={inputVal.join('')}
 				editable={false}
-				selectTextOnFocus={false}
 			></TextInput>
 
 			<FlatList
