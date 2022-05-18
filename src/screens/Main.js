@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import Keypad from '../components/Keypad';
 import Visor from '../components/Visor';
+import { handleStatement } from '../lib/helpers';
 
 const Main = () => {
 	const [currentStatement, setCurrentStatement] = useState('');
@@ -12,27 +13,15 @@ const Main = () => {
 		'2000',
 	]);
 
-	function handleKeyPress(e) {
-		console.log(e);
-		if (e.type === 'digit') setCurrentStatement(val => val + e.symbol);
-		if (e.type === 'operation')
-			setCurrentStatement(val => `${val} ${e.symbol} `);
-		if (e.type === 'action') {
-			switch (e.value) {
-				case 'back': {
-					const temp = currentStatement.split('');
-					console.log(temp, temp[temp.length - 1]);
-					if (temp[temp.length - 1] === ' ') {
-						for (let x of [1, 2, 3]) {
-							temp.pop();
-						}
-					} else {
-						temp.pop();
-					}
-					setCurrentStatement(val => temp.join(''));
-				}
-			}
-		}
+	function handleKeyPress(key) {
+		// console.log(key);
+
+		handleStatement(
+			key,
+			currentStatement,
+			setCurrentStatement,
+			setStatements
+		);
 	}
 	return (
 		<SafeAreaView style={styles.container}>

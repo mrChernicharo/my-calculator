@@ -27,7 +27,8 @@ export const KeysData = [
 
 	{
 		id: 3,
-		value: 'div',
+		title: 'div',
+		value: '/',
 		symbol: '÷',
 		type: 'operation',
 	},
@@ -55,7 +56,8 @@ export const KeysData = [
 		// symbol: '√',
 		// type: 'operation',
 
-		value: 'mult',
+		title: 'mult',
+		value: '*',
 		symbol: 'X',
 		type: 'operation',
 	},
@@ -79,8 +81,8 @@ export const KeysData = [
 	},
 	{
 		id: 11,
-
-		value: 'sub',
+		title: 'sub',
+		value: '-',
 		symbol: '-',
 		type: 'operation',
 	},
@@ -104,7 +106,8 @@ export const KeysData = [
 	},
 	{
 		id: 15,
-		value: 'sum',
+		title: 'sum',
+		value: '+',
 		symbol: '+',
 		type: 'operation',
 	},
@@ -128,7 +131,7 @@ export const KeysData = [
 	},
 	{
 		id: 19,
-		value: 'equals',
+		value: 'equal',
 		symbol: '=',
 		type: 'action',
 		bg: 'dodgerblue',
