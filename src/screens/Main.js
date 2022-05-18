@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import Keypad from '../components/Keypad';
 import Visor from '../components/Visor';
+import { KeysData } from '../lib/constants';
 
 const Main = () => {
+	const dummy = [...KeysData];
+	const [statements, setStatements] = useState([
+		[dummy[4], dummy[6]],
+		[dummy[4], dummy[7], dummy[10]],
+	]);
+
 	function handleKeyPress(e) {
 		console.log(e);
 	}
@@ -11,7 +18,7 @@ const Main = () => {
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />
 
-			<Visor />
+			<Visor statements={statements} />
 
 			<Keypad onKeyPress={handleKeyPress} />
 		</SafeAreaView>

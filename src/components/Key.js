@@ -6,11 +6,18 @@ const Key = ({ item, onClick }) => (
 	<RectButton onPress={() => onClick(item)}>
 		<View
 			style={{
-				backgroundColor: item.color || '#f9c2ff',
+				backgroundColor: item.bg || '#f9c2ff',
 				...styles.item,
 			}}
 		>
-			<Text>{item.symbol}</Text>
+			<Text
+				style={{
+					color: item.color || '#000',
+					...styles.text,
+				}}
+			>
+				{item.symbol}
+			</Text>
 		</View>
 	</RectButton>
 );
@@ -18,10 +25,14 @@ const Key = ({ item, onClick }) => (
 const styles = StyleSheet.create({
 	item: {
 		width: 80,
-		height: 30,
+		height: 36,
 		margin: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
+	},
+	text: {
+		fontSize: 20,
+		fontWeight: '800',
 	},
 });
 

@@ -4,24 +4,32 @@ export const KeysData = [
 		value: 'clear',
 		symbol: 'C',
 		type: 'action',
+		bg: 'dodgerblue',
+		color: 'white',
 	},
 	{
 		id: 1,
-		value: 'perc',
-		symbol: '%',
-		type: 'operation',
+		// value: 'perc',
+		// symbol: '%',
+		// type: 'operation',
+		value: 'null',
+		symbol: '',
+		type: 'none',
 	},
 	{
 		id: 2,
-		value: 'sqrt',
-		symbol: '√',
-		type: 'operation',
-	},
-	{
-		id: 3,
 		value: 'back',
 		symbol: '⌫',
 		type: 'action',
+		bg: 'dodgerblue',
+		color: 'white',
+	},
+
+	{
+		id: 3,
+		value: 'div',
+		symbol: '÷',
+		type: 'operation',
 	},
 	{
 		id: 4,
@@ -43,8 +51,12 @@ export const KeysData = [
 	},
 	{
 		id: 7,
-		value: 'div',
-		symbol: '÷',
+		// value: 'sqrt',
+		// symbol: '√',
+		// type: 'operation',
+
+		value: 'mult',
+		symbol: 'X',
 		type: 'operation',
 	},
 	{
@@ -67,8 +79,9 @@ export const KeysData = [
 	},
 	{
 		id: 11,
-		value: 'mult',
-		symbol: 'X',
+
+		value: 'sub',
+		symbol: '-',
 		type: 'operation',
 	},
 	{
@@ -91,15 +104,15 @@ export const KeysData = [
 	},
 	{
 		id: 15,
-		value: 'sub',
-		symbol: '-',
+		value: 'sum',
+		symbol: '+',
 		type: 'operation',
 	},
 	{
 		id: 16,
 		value: 'null',
 		symbol: '',
-		type: 'digit',
+		type: 'none',
 	},
 	{
 		id: 17,
@@ -109,15 +122,16 @@ export const KeysData = [
 	},
 	{
 		id: 18,
-		value: 'sum',
-		symbol: '+',
-		type: 'operation',
+		value: 'dot',
+		symbol: '.',
+		type: 'dot',
 	},
 	{
 		id: 19,
 		value: 'equals',
 		symbol: '=',
 		type: 'action',
-		color: 'coral',
+		bg: 'dodgerblue',
+		color: 'white',
 	},
 ];
