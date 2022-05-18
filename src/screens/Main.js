@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import Keypad from '../components/Keypad';
 import Visor from '../components/Visor';
@@ -15,14 +15,25 @@ const Main = () => {
 
 	function handleKeyPress(key) {
 		// console.log(key);
+		const lastStatement = statements[statements.length - 1];
 
 		handleStatement(
 			key,
 			currentStatement,
+			lastStatement,
 			setCurrentStatement,
 			setStatements
 		);
 	}
+
+	// useEffect(() => {
+	// setTimeout(() => setPrevStatement(s => currentStatement), 1000);
+	// }, [prevStatement]);
+
+	useEffect(() => {
+		console.log('currentStatement', currentStatement);
+		// setTimeout(() => setPrevStatement(s => currentStatement), 1000);
+	}, [currentStatement]);
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />

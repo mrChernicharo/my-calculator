@@ -1,8 +1,8 @@
 export const KeysData = [
 	{
 		id: 0,
-		value: 'clear',
-		symbol: 'C',
+		value: 'allClear',
+		symbol: 'AC',
 		type: 'action',
 		bg: 'dodgerblue',
 		color: 'white',
@@ -12,9 +12,11 @@ export const KeysData = [
 		// value: 'perc',
 		// symbol: '%',
 		// type: 'operation',
-		value: 'null',
-		symbol: '',
-		type: 'none',
+		value: 'clear',
+		symbol: 'C',
+		type: 'action',
+		bg: 'dodgerblue',
+		color: 'white',
 	},
 	{
 		id: 2,
@@ -24,7 +26,6 @@ export const KeysData = [
 		bg: 'dodgerblue',
 		color: 'white',
 	},
-
 	{
 		id: 3,
 		title: 'div',
@@ -55,7 +56,6 @@ export const KeysData = [
 		// value: 'sqrt',
 		// symbol: '√',
 		// type: 'operation',
-
 		title: 'mult',
 		value: '*',
 		symbol: 'X',

@@ -1,13 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { StyleSheet } from 'react-native';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import Statement from './Statement';
-
-// import { Container } from './styles';
 
 const Visor = ({ currentStatement, statements }) => {
 	return (
-		<View style={styles.visor}>
+		<ScrollView
+			contentContainerStyle={styles.visor}
+			style={styles.container}
+		>
 			<>
 				{statements.map((statement, i) => (
 					<Statement key={i} statement={statement} index={i} />
@@ -18,17 +19,25 @@ const Visor = ({ currentStatement, statements }) => {
 				selectTextOnFocus={false}
 				value={currentStatement}
 			/>
-		</View>
+		</ScrollView>
 	);
 };
 
 const styles = StyleSheet.create({
-	visor: {
+	container: {
 		height: 260,
 		width: '90%',
-		backgroundColor: '#efefef',
+		backgroundColor: '#242424',
 		marginBottom: 16,
 		fontSize: 32,
+	},
+	visor: {
+		backgroundColor: '#efefef',
+		position: 'absolute',
+		bottom: 0,
+		right: 0,
+		height: 'auto',
+		alignItems: 'flex-end',
 	},
 });
 

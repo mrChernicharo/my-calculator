@@ -13,18 +13,35 @@ export function translateKeyPress(key) {
 export function handleStatement(
 	key,
 	currentStatement,
+	prevStatement,
 	setCurrentStatement,
 	setStatements
 ) {
 	const temp = currentStatement.split('');
-	const prev = temp[temp.length - 1];
-	// console.log({ prev, temp });
+	const lastChar = temp[temp.length - 1];
+	const secondLastChar = temp[temp.length - 2];
+	const thirdLastChar = temp[temp.length - 3];
 
-	if (key.type === 'digit') setCurrentStatement(val => val + key.symbol);
+	if (key.type === 'digit') {
+		if (lastChar === '0' && ['+', '-', 'X', '÷'].includes(thirdLastChar)) {
+			temp.pop();
+
+			setCurrentStatement(val => [...temp, key.symbol].join(''));
+
+			return;
+		}
+		if (lastChar === '0' && temp.length === 1) {
+			// console.log('heeeey', temp, lastChar);
+			setCurrentStatement(val => key.symbol);
+			return;
+		} else {
+			setCurrentStatement(val => val + key.symbol);
+		}
+	}
 	if (key.type === 'operation') {
-		if (prev === ' ') {
-			for (let x of [1, 2, 3]) temp.pop();
-			setCurrentStatement(val => [...temp, ` ${key.symbol} `].join(''));
+		if (lastChar === ' ') {
+			pop3(temp);
+			setCurrentStatement([...temp, ` ${key.symbol} `].join(''));
 		} else {
 			setCurrentStatement(val => `${val} ${key.symbol} `);
 		}
@@ -33,8 +50,11 @@ export function handleStatement(
 		switch (key.value) {
 			case 'back':
 				{
-					if (prev === ' ') {
-						for (let x of [1, 2, 3]) temp.pop();
+					if (temp.length === 1) {
+						return;
+					}
+					if (lastChar === ' ' || lastChar === 'N') {
+						pop3(temp);
 					} else {
 						temp.pop();
 					}
@@ -43,22 +63,47 @@ export function handleStatement(
 				break;
 			case 'clear':
 				{
-					setCurrentStatement('');
+					setCurrentStatement('0');
+				}
+				break;
+			case 'allClear':
+				{
+					setCurrentStatement('0');
+					setStatements([]);
 				}
 				break;
 			case 'equal':
 				{
-					setStatements(s => [...s, temp.join('')]);
-					setCurrentStatement(`${evaluate(temp)}`);
+					console.log('pressed equal!', {
+						currentStatement,
+						prevStatement,
+						temp,
+						lastChar,
+					});
+
+					if (currentStatement === prevStatement) {
+						// setCurrentStatement('0');
+						// if ()
+						// setStatements(s => [...s, temp.join('')]);
+					} else {
+						setCurrentStatement(`${evaluate(temp)}`);
+						setStatements(s => [...s, temp.join('')]);
+					}
 				}
 				break;
 		}
 	}
 }
 
+function pop3(temp) {
+	for (let x of [1, 2, 3]) temp.pop();
+}
+
+// function setCurrentStatement() {}
+
 function evaluate(temp) {
 	try {
-		return eval(
+		const result = eval(
 			temp
 				.map(item => {
 					if (item === 'X') return '*';
@@ -67,6 +112,8 @@ function evaluate(temp) {
 				})
 				.join('')
 		);
+
+		return result ?? 0;
 	} catch (err) {
 		return 'NaN';
 	}
