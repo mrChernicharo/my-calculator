@@ -7,7 +7,7 @@ const Statement = ({ statement, index }) => {
 	console.log(statement);
 	return (
 		<View>
-			<Text>{`statement ${index}`}</Text>
+			<Text>{statement}</Text>
 		</View>
 	);
 };

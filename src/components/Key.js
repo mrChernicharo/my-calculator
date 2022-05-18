@@ -4,18 +4,8 @@ import { RectButton } from 'react-native-gesture-handler';
 
 const Key = ({ item, onClick }) => (
 	<RectButton onPress={() => onClick(item)}>
-		<View
-			style={{
-				backgroundColor: item.bg || '#f9c2ff',
-				...styles.item,
-			}}
-		>
-			<Text
-				style={{
-					color: item.color || '#000',
-					...styles.text,
-				}}
-			>
+		<View style={{ backgroundColor: item.bg || '#f9c2ff', ...styles.item }}>
+			<Text style={{ color: item.color || '#000', ...styles.text }}>
 				{item.symbol}
 			</Text>
 		</View>

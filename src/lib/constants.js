@@ -124,7 +124,7 @@ export const KeysData = [
 		id: 18,
 		value: 'dot',
 		symbol: '.',
-		type: 'dot',
+		type: 'digit',
 	},
 	{
 		id: 19,
