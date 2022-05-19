@@ -14,7 +14,7 @@ const Main = () => {
 	]);
 
 	function handleKeyPress(key) {
-		// console.log(key);
+		console.log(key);
 		const lastStatement = statements[statements.length - 1];
 
 		handleStatement(

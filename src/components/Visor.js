@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, Platform } from 'react-native';
+import { ScrollView, TextInput, } from 'react-native-gesture-handler';
 import Statement from './Statement';
 
 const Visor = ({ currentStatement, statements }) => {
+	console.log(Platform.OS)
+
 	return (
 		<ScrollView
 			contentContainerStyle={styles.visor}
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
 		right: 0,
 		height: 'auto',
 		alignItems: 'flex-end',
+		fontSize: 32,
 	},
 });
 
