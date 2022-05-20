@@ -7,7 +7,13 @@ const Statement = ({ statement, index }) => {
 	// console.log(statement);
 	return (
 		<View>
-			<Text>{statement}</Text>
+			<Text
+				style={{
+					fontSize: 32,
+				}}
+			>
+				{statement}
+			</Text>
 		</View>
 	);
 };

@@ -5,8 +5,24 @@ import Visor from '../components/Visor';
 import { handleStatement } from '../lib/helpers';
 
 const Main = () => {
-	const [currentStatement, setCurrentStatement] = useState('');
+	const [currentStatement, setCurrentStatement] = useState('0');
 	const [statements, setStatements] = useState([
+		'20 + 5',
+		'25',
+		'1000 X 2',
+		'2000',
+		'20 + 5',
+		'25',
+		'1000 X 2',
+		'2000',
+		'20 + 5',
+		'25',
+		'1000 X 2',
+		'2000',
+		'20 + 5',
+		'25',
+		'1000 X 2',
+		'2000',
 		'20 + 5',
 		'25',
 		'1000 X 2',
@@ -24,15 +40,12 @@ const Main = () => {
 			setCurrentStatement,
 			setStatements
 		);
-	}
 
-	// useEffect(() => {
-	// setTimeout(() => setPrevStatement(s => currentStatement), 1000);
-	// }, [prevStatement]);
+		//scroll up
+	}
 
 	useEffect(() => {
 		console.log('currentStatement', currentStatement);
-		// setTimeout(() => setPrevStatement(s => currentStatement), 1000);
 	}, [currentStatement]);
 	return (
 		<SafeAreaView style={styles.container}>
