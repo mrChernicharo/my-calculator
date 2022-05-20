@@ -9,6 +9,7 @@ import { KeysData } from '../lib/constants';
 const Keypad = ({ onKeyPress }) => {
 	return (
 		<FlatList
+			style={{ marginTop: 36 }}
 			data={KeysData}
 			numColumns={4}
 			keyExtractor={item => item.value}

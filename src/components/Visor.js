@@ -1,31 +1,37 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { VISOR_HEIGHT } from '../lib/constants';
 import Statement from './Statement';
 
 const Visor = ({ currentStatement, statements }) => {
 	const visorRef = useRef(null);
-	const paddingRef = useRef(0);
+	const [containerPaddingTop, setContainerPaddingTop] = useState(1);
+	const visibleArea = VISOR_HEIGHT - 38;
 
 	const onLayout = e => {
-		const { x, y, height, width } = e.nativeEvent.layout;
+		const { x, y, width, height: textDivHeight } = e.nativeEvent.layout;
 
-		visorRef.current.scrollTo({
-			y: height,
-			animate: true,
-		});
+		setContainerPaddingTop(v => (v > 0 ? visibleArea - textDivHeight : 0));
 
-		// paddingRef.current += 20;
-		console.log(paddingRef.current);
+		if (textDivHeight > 384) {
+			setContainerPaddingTop(1);
+			visorRef.current.scrollTo({
+				y: textDivHeight,
+				animate: true,
+			});
+		}
 	};
 
 	return (
-		<View style={styles.container}>
+		<View
+			style={{
+				paddingTop: containerPaddingTop || visibleArea,
+				...styles.container,
+			}}
+		>
 			<ScrollView ref={visorRef} contentContainerStyle={styles.visor}>
-				<View
-					style={{ paddingTop: paddingRef.current }}
-					onLayout={onLayout}
-				>
+				<View onLayout={onLayout}>
 					{statements.map((statement, i) => (
 						<Statement key={i} statement={statement} index={i} />
 					))}
@@ -43,23 +49,23 @@ const Visor = ({ currentStatement, statements }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		height: 460,
+		height: VISOR_HEIGHT,
 		width: '90%',
-		backgroundColor: '#242424',
-		marginBottom: 16,
+		backgroundColor: '#dedede',
 	},
 	visor: {
 		backgroundColor: '#efefef',
-		bottom: 0,
-		right: 0,
 		height: 'auto',
 		width: '100%',
+		paddingRight: 6,
 		alignItems: 'flex-end',
 	},
 	input: {
 		backgroundColor: '#efefef',
-		color: '#242424',
-		fontSize: 32,
+		paddingRight: 6,
+		color: '#ffa2a3',
+		fontSize: 34,
+		fontWeight: '600',
 		textAlign: 'right',
 	},
 });

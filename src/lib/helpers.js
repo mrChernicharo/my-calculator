@@ -1,15 +1,3 @@
-export function translateKeyPress(key) {
-	switch (key.type) {
-		case 'operation':
-			return ` ${key.symbol} `;
-		case 'action':
-			return console.log(key);
-		case 'digit':
-		default:
-			return key.symbol;
-	}
-}
-
 export function handleStatement(
 	key,
 	currentStatement,
@@ -74,12 +62,12 @@ export function handleStatement(
 				break;
 			case 'equal':
 				{
-					console.log('pressed equal!', {
-						currentStatement,
-						prevStatement,
-						temp,
-						lastChar,
-					});
+					// console.log('pressed equal!', {
+					// 	currentStatement,
+					// 	prevStatement,
+					// 	temp,
+					// 	lastChar,
+					// });
 
 					if (currentStatement === prevStatement) {
 						// setCurrentStatement('0');

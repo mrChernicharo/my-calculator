@@ -138,3 +138,5 @@ export const KeysData = [
 		color: 'white',
 	},
 ];
+
+export const VISOR_HEIGHT = 420;
