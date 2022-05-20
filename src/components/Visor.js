@@ -1,45 +1,35 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import Statement from './Statement';
 
 const Visor = ({ currentStatement, statements }) => {
-	// console.log(Platform.OS);
+	const visorRef = useRef(null);
+	const paddingRef = useRef(0);
 
-	// const [y, setY] = useState(240);
-	// const y = useRef(240);
-	const scrollViewRef = useRef(null);
+	const onLayout = e => {
+		const { x, y, height, width } = e.nativeEvent.layout;
 
-	// viewConfig.validAttributes.style
+		visorRef.current.scrollTo({
+			y: height,
+			animate: true,
+		});
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			if (scrollViewRef.current) {
-				let rand = Math.random() * 200;
-
-				scrollViewRef.current.scrollTo({
-					y: rand,
-					animate: true,
-				});
-
-				console.log(rand);
-			}
-		}, 1000);
-
-		return () => {
-			clearInterval(interval);
-		};
-	}, []);
+		// paddingRef.current += 20;
+		console.log(paddingRef.current);
+	};
 
 	return (
 		<View style={styles.container}>
-			<ScrollView
-				ref={scrollViewRef}
-				contentContainerStyle={styles.visor}
-			>
-				{statements.map((statement, i) => (
-					<Statement key={i} statement={statement} index={i} />
-				))}
+			<ScrollView ref={visorRef} contentContainerStyle={styles.visor}>
+				<View
+					style={{ paddingTop: paddingRef.current }}
+					onLayout={onLayout}
+				>
+					{statements.map((statement, i) => (
+						<Statement key={i} statement={statement} index={i} />
+					))}
+				</View>
 			</ScrollView>
 			<TextInput
 				style={styles.input}
@@ -53,19 +43,17 @@ const Visor = ({ currentStatement, statements }) => {
 
 const styles = StyleSheet.create({
 	container: {
-		height: 360,
+		height: 460,
 		width: '90%',
-		// backgroundColor: '#242424',
-		backgroundColor: '#efefef',
-
+		backgroundColor: '#242424',
 		marginBottom: 16,
 	},
 	visor: {
 		backgroundColor: '#efefef',
-		// position: 'absolute',
 		bottom: 0,
 		right: 0,
 		height: 'auto',
+		width: '100%',
 		alignItems: 'flex-end',
 	},
 	input: {

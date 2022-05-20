@@ -30,7 +30,6 @@ const Main = () => {
 	]);
 
 	function handleKeyPress(key) {
-		console.log(key);
 		const lastStatement = statements[statements.length - 1];
 
 		handleStatement(
@@ -40,13 +39,12 @@ const Main = () => {
 			setCurrentStatement,
 			setStatements
 		);
-
-		//scroll up
 	}
 
 	useEffect(() => {
-		console.log('currentStatement', currentStatement);
+		// console.log('currentStatement', currentStatement);
 	}, [currentStatement]);
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<StatusBar barStyle="dark-content" />

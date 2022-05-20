@@ -6,10 +6,17 @@ import { Text, View } from 'react-native';
 const Statement = ({ statement, index }) => {
 	// console.log(statement);
 	return (
-		<View>
+		<View
+			style={
+				{
+					// borderWidth: 2,
+				}
+			}
+		>
 			<Text
 				style={{
 					fontSize: 32,
+					textAlign: 'right',
 				}}
 			>
 				{statement}
