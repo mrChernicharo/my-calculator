@@ -7,14 +7,15 @@ import { handleStatement } from '../lib/helpers';
 const Main = () => {
 	const [currentStatement, setCurrentStatement] = useState('0');
 	const [statements, setStatements] = useState([
-		'1000 X 2',
-		'2000',
-		'20 + 5',
-		'25',
-		'1000 X 2',
-		'2000',
-		'20 + 5',
-		'25',
+		// 0,
+		// '1000 X 2',
+		// '2000',
+		// '20 + 5',
+		// '25',
+		// '1000 X 2',
+		// '2000',
+		// '20 + 5',
+		// '25',
 		// '1000 X 2',
 		// '2000',
 		// '20 + 5',

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 	container: {
 		height: VISOR_HEIGHT,
 		width: '90%',
-		backgroundColor: '#dedede',
+		backgroundColor: '#efefef',
 	},
 	visor: {
 		backgroundColor: '#efefef',
