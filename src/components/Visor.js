@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
-import { VISOR_HEIGHT } from '../lib/constants';
-import Statement from './Statement';
+import React, { useRef, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
+import { VISOR_HEIGHT } from "../lib/constants";
+import Statement from "./Statement";
 
 const Visor = ({ currentStatement, statements }) => {
 	const visorRef = useRef(null);
@@ -27,9 +27,9 @@ const Visor = ({ currentStatement, statements }) => {
 		<View
 			style={{
 				paddingTop: containerPaddingTop || visibleArea,
+				borderRadius: 20,
 				...styles.container,
-			}}
-		>
+			}}>
 			<ScrollView ref={visorRef} contentContainerStyle={styles.visor}>
 				<View onLayout={onLayout}>
 					{statements.map((statement, i) => (
@@ -50,23 +50,23 @@ const Visor = ({ currentStatement, statements }) => {
 const styles = StyleSheet.create({
 	container: {
 		height: VISOR_HEIGHT,
-		width: '90%',
-		backgroundColor: '#efefef',
+		width: "90%",
+		backgroundColor: "#efefef",
 	},
 	visor: {
-		backgroundColor: '#efefef',
-		height: 'auto',
-		width: '100%',
+		backgroundColor: "#efefef",
+		height: "auto",
+		width: "100%",
 		paddingRight: 6,
-		alignItems: 'flex-end',
+		alignItems: "flex-end",
 	},
 	input: {
-		backgroundColor: '#efefef',
+		backgroundColor: "#efefef",
 		paddingRight: 6,
-		color: '#ffa2a3',
+		color: "#ffa2a3",
 		fontSize: 34,
-		fontWeight: '600',
-		textAlign: 'right',
+		fontWeight: "600",
+		textAlign: "right",
 	},
 });
 

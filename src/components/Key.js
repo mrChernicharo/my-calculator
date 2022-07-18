@@ -23,6 +23,11 @@ const Key = ({ item, onClick }) => {
 			<View
 				style={{
 					backgroundColor: item.bg || '#f9c2ff',
+					borderTopLeftRadius: item.symbol === 'AC' ? 10 : 0,
+					borderTopRightRadius: item.symbol === '÷' ? 10 : 0,
+					borderBottomLeftRadius: item.symbol === '' ? 10 : 0,
+					borderBottomRightRadius: item.symbol === '=' ? 10 : 0,
+
 					...styles.item,
 				}}
 			>

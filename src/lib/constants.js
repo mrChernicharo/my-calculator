@@ -139,4 +139,4 @@ export const KeysData = [
 	},
 ];
 
-export const VISOR_HEIGHT = 420;
+export const VISOR_HEIGHT = 320;

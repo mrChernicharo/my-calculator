@@ -2,7 +2,7 @@
   "expo": {
     "name": "my-calculator",
     "slug": "my-calculator",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,14 +18,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chernicharo.mycalculator",
+      "buildNumber": "1.0.1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.chernicharo.mycalculator"
+      "package": "com.chernicharo.mycalculator",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
